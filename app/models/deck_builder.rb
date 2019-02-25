@@ -11,7 +11,7 @@ class DeckBuilder
       mythology: 20,
       history: 23
     }
-
+    
     math = TriviaService.new.get_questions(num_cards, category[:math])
     @deck << math["results"].map {|trivia| Card.new(trivia)}
 
