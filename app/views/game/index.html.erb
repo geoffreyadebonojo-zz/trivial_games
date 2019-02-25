@@ -1,0 +1,39 @@
+<div id="game-index">
+  <h1><%= raw(@current_card.question) %></h1>
+  <% @current_card.all_answers.shuffle.each_with_index do |answer, index| %>
+    <button class="option" id="<%= index %>" onclick="submitAnswer('<%= answer %>')"><%= raw(answer) %></button>
+  <% end %>
+  <hr>
+  <div id="correct-answer"></div>
+</div>
+<script>
+  function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
+  let answer = document.querySelector("#show-answer-button");
+  let answerField = document.querySelector('#correct-answer');
+
+  let difficulty = '<%= @current_card.numeric_difficulty %>';
+  let correct = '<%= @current_card.correct_answer %>';
+
+  let points = parseInt(difficulty);
+
+  function submitAnswer(answer) {
+    if (answer == correct) {
+      answerField.innerHTML = "";
+      answerField.innerHTML += "Correct! ";
+      answerField.innerHTML += "The answer is " + decodeHtml(correct);
+      let score = localStorage.getItem("score");
+      score += parseInt(difficulty);
+      localStorage.setItem("score", score);
+    } else {
+      answerField.innerHTML = "";
+      answerField.innerHTML += "Incorrect! rails ";
+      answerField.innerHTML += "The answer is " + decodeHtml(correct);
+    }
+  }
+
+</script>
