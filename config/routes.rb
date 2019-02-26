@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :game, only: [:index]
+  get '/', to: 'home#index'
+  get '/instructions', to:'instructions#index'
+  get '/game', to: 'game#index'
 end
