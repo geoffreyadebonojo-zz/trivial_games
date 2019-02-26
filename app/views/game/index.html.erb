@@ -1,0 +1,50 @@
+<div id="game-index">
+
+  <h1><%= raw(@current_card.question) %></h1>
+  <div id="options">
+    <% @current_card.all_answers.shuffle.each_with_index do |answer, index| %>
+      <button class="option" id="<%= index %>" onclick="submitAnswer('<%= answer %>')"><%= raw(answer) %></button>
+    <% end %>
+  </div>
+  <hr>
+  <div id="correct-answer"></div>
+  <div><button id="next-question">Next Question</button></div>
+</div>
+
+<script>
+  function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
+  let answer = document.querySelector("#show-answer-button");
+  let answerField = document.querySelector('#correct-answer');
+
+  let difficulty = '<%= @current_card.numeric_difficulty %>';
+  let correct = '<%= @current_card.correct_answer %>';
+
+  let points = parseInt(difficulty);
+
+  function submitAnswer(answer) {
+    answerField.innerHTML = "";
+
+    if (answer == correct) {
+      answerField.innerHTML += "Correct! ";
+      answerField.innerHTML += "The answer is " + decodeHtml(correct);
+      let score = localStorage.getItem("score");
+      score += parseInt(difficulty);
+
+    } else {
+      answerField.innerHTML += "Incorrect! ";
+      answerField.innerHTML += "The answer is " + decodeHtml(correct);
+    }
+
+    //disable buttons
+
+    document.getElementById("next-question").addEventListener('click', function(){
+    location.reload();
+    });
+  }
+
+</script>
