@@ -1,6 +1,6 @@
 language: ruby
 rvm:
- - 2.4
+ - 2.4.3
 
 before_script:
   - psql -c 'create database trivial_games_test;' -U postgres

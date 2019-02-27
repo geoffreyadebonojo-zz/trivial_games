@@ -1,3 +1,7 @@
-<div>Welcome to Trivia Night!</div>
-<%= link_to "Play", "/game"  %>
-<%= link_to "Instructions", "/instructions" %>
+<div id="home-index" class="center">
+
+  <h1>Welcome to Trivia Night!</h1>
+  <%= link_to "Play Game", "/game", id:"play-game-button", class:"nav-link" %>
+  <%= link_to "Instructions", "/instructions", id:"instructions-button", class:"nav-link" %>
+
+</div>
