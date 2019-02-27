@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "User visits the instructions page" do
-  it "sees " do
+  it "sees the instructions page" do
     visit "/"
 
     click_on "Instructions"

@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Trivial Games is a trivia app
 
-Things you may want to cover:
 
-* Ruby version
+Ruby 2.4.3 on Rails 5.2.2
 
-* System dependencies
+```shell
+git clone https://github.com/geoffreyadebonojo/trivial_games.git
+cd trivial_games
+bundle
+```
 
-* Configuration
+Even though this app doesn't use a database, we still need to create one and run a migration with
+```shell
+rake db:{create,migrate}
+```
 
-* Database creation
+To run the test suite,
+```shell
+rspec
+```
+Simplecov coverage available:
+```shell
+open coverage/index.html
+```
 
-* Database initialization
+To run locally:
+```shell
+rails s
+```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Multiple Choice
+![alt text](readme_images/multiple_choice.png)
 
-* Deployment instructions
-
-* ...
+True-False
+![alt text](readme_images/true_false.png)
