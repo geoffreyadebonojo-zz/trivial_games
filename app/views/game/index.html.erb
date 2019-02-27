@@ -1,6 +1,6 @@
 <div id="game-index">
 
-  <h1><%= raw(@current_card.question) %></h1>
+  <h1 id="question"><%= raw(@current_card.question) %></h1>
   <div id="options">
     <% @current_card.all_answers.shuffle.each_with_index do |answer, index| %>
       <button class="option" id="<%= index %>" onclick="submitAnswer('<%= answer %>')"><%= raw(answer) %></button>
@@ -8,7 +8,8 @@
   </div>
   <hr>
   <div id="correct-answer"></div>
-  <div><button id="next-question">Next Question</button></div>
+  <div><button id="next-question">Skip</button></div>
+  <div id="home-link"></div>
 </div>
 
 <script>
@@ -26,25 +27,58 @@
 
   let points = parseInt(difficulty);
 
+  var nextQuestion = document.getElementById("next-question");
+
   function submitAnswer(answer) {
     answerField.innerHTML = "";
+    let score;
 
     if (answer == correct) {
       answerField.innerHTML += "Correct! ";
       answerField.innerHTML += "The answer is " + decodeHtml(correct);
-      let score = localStorage.getItem("score");
+      nextQuestion.innerHTML = "Next Question";
+
+      if (localStorage.getItem("score") == null){
+        localStorage.setItem("score", 0);
+      } else {
+        score = parseInt(localStorage.getItem("score"));
+      }
       score += parseInt(difficulty);
+      localStorage.setItem("score", score);
 
     } else {
       answerField.innerHTML += "Incorrect! ";
       answerField.innerHTML += "The answer is " + decodeHtml(correct);
+      nextQuestion.innerHTML = "Next Question";
+
+      if (localStorage.getItem("score") == null){
+        localStorage.setItem("score", 0);
+      } else {
+        score = parseInt(localStorage.getItem("score"));
+      }
+      score -= parseInt(difficulty);
+      localStorage.setItem("score", score);
     }
-
-    //disable buttons
-
-    document.getElementById("next-question").addEventListener('click', function(){
-    location.reload();
-    });
   }
 
+  if (localStorage.getItem("questionNum") == null){
+    localStorage.setItem("questionNum", 0);
+  } else {
+    questionNum = parseInt(localStorage.getItem("questionNum"));
+  }
+  questionNum += 1;
+  localStorage.setItem("questionNum", questionNum);
+
+  nextQuestion.addEventListener('click', function(){
+    location.reload();
+  });
+
+  let score = localStorage.getItem("score");
+  if (score > 10){
+    document.querySelector("#question").innerHTML = "You Win!";
+    document.querySelector("#options").innerHTML = "Great job on on your knowledge!";
+    nextQuestion.innerHTML = "Play Again";
+    localStorage.setItem("score", 0);
+    homeLink.innerHTML = `<a href="home-link">Home</a>`;
+  }
 </script>
