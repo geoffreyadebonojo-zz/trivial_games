@@ -1,0 +1,45 @@
+.center {
+  text-align: center
+}
+
+h1 {
+  font-family: 'Noto Sans', sans-serif;
+  padding: 0em 1em 0.5em 1em;
+}
+
+#options {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5em;
+  margin: 5em 0 5em 0;
+}
+
+.option, button, .nav-link {
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 50px;
+  border: blue solid 2px;
+  color: blue;
+  background: white;
+  transition: background 0.5s;
+  transition: color 0.3s;
+  font-size: 1.5em;
+}
+
+#exit-link {
+  position: relative;
+  top: 10px;
+  text-align: left;
+}
+
+.option:hover, button:hover, .nav-link:hover{
+  cursor: pointer;
+  background: blue;
+  border: transparent solid 2px;
+  color: white;
+}
+
+#correct-answer {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+}

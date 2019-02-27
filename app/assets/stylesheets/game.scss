@@ -1,35 +1,4 @@
-// Place all the styles related to the game controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 #game-index {
-  text-align: center;
-  h1 {
-    font-family: 'Noto Sans', sans-serif;
-    padding: 0em 1em 0.5em 1em;
-  }
-  #options {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 0.5em;
-    margin: 4em 0 4em 0;
-  }
-  .option, #next-question, #play, #home-button {
-    padding: 12px;
-    border-radius: 50px;
-    border: blue solid 2px;
-    color: blue;
-    transition: background 0.5s;
-    transition: color 0.3s;
-    font-size: 1.5em;
-  }
-  .option:hover, #next-question:hover, #play:hover, #home-button:hover {
-    cursor: pointer;
-    background: blue;
-    border: transparent solid 2px;
-    color: white;
-  }
-  #correct-answer {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2em;
-  }
+
+  
 }
