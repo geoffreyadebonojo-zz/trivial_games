@@ -11,8 +11,9 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0.5em;
+    margin: 4em 0 4em 0;
   }
-  .option, #next-question {
+  .option, #next-question, #play, #home-button {
     padding: 12px;
     border-radius: 50px;
     border: blue solid 2px;
@@ -21,7 +22,7 @@
     transition: color 0.3s;
     font-size: 1.5em;
   }
-  .option:hover, #next-question:hover {
+  .option:hover, #next-question:hover, #play:hover, #home-button:hover {
     cursor: pointer;
     background: blue;
     border: transparent solid 2px;
@@ -29,6 +30,6 @@
   }
   #correct-answer {
     font-family: 'Open Sans', sans-serif;
-    margin: 2em;
+    font-size: 2em;
   }
 }
