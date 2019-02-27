@@ -1,4 +1,4 @@
-<%= link_to "Exit", "/" %>
+<%= link_to "Exit", "/", id: "exit-link"%>
 
 <div id="game-index">
 
@@ -35,7 +35,7 @@
   function submitAnswer(answer) {
 
     answerField.innerHTML = "";
-    let score;
+    let score = 0;
 
     if (answer == correct) {
       answerField.innerHTML += "Correct! ";
