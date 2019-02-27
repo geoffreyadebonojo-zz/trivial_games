@@ -72,13 +72,26 @@
   nextQuestion.addEventListener('click', function(){
     location.reload();
   });
-
+  let numTurns = 10;
+  let maxScore = 10
   let score = localStorage.getItem("score");
-  if (score > 10){
+  if (score >= maxScore){
     document.querySelector("#question").innerHTML = "You Win!";
-    document.querySelector("#options").innerHTML = "Great job on on your knowledge!";
+    document.querySelector("#options").innerHTML = `<h3>Turn ${questionNum} out of ${numTurns}</h3>
+                                                    <p>Great job on on your knowledge!</p>`;
     nextQuestion.innerHTML = "Play Again";
     localStorage.setItem("score", 0);
+    localStorage.setItem("questionNum", 0);
+    homeLink.innerHTML = `<a href="home-link">Home</a>`;
+  }
+
+  if (questionNum >= numTurns){
+    document.querySelector("#question").innerHTML = "You Lose!";
+    document.querySelector("#options").innerHTML = `<h3>Scored ${score} out of ${maxScore}</h3>
+                                                    <p>Work on your knowledge!</p>`;
+    nextQuestion.innerHTML = "Play Again";
+    localStorage.setItem("score", 0);
+    localStorage.setItem("questionNum", 0);
     homeLink.innerHTML = `<a href="home-link">Home</a>`;
   }
 </script>
