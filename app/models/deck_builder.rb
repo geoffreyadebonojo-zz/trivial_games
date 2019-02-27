@@ -7,13 +7,9 @@ class DeckBuilder
     category = {
       nature: 17,
       computers: 18,
-      math: 19,
       mythology: 20,
       history: 23
     }
-
-    math = TriviaService.new.get_questions(num_cards, category[:math])
-    @deck << math["results"].map {|trivia| Card.new(trivia)}
 
     computer = TriviaService.new.get_questions(num_cards, category[:computer])
     @deck << computer["results"].map {|trivia| Card.new(trivia)}
