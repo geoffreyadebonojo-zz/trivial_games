@@ -1,3 +1,5 @@
+<%= link_to "Exit", "/" %>
+
 <div id="game-index">
 
   <h1 id="question"><%= raw(@current_card.question) %></h1>
@@ -13,6 +15,7 @@
 </div>
 
 <script>
+
   function decodeHtml(html) {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
@@ -30,6 +33,7 @@
   var nextQuestion = document.getElementById("next-question");
 
   function submitAnswer(answer) {
+
     answerField.innerHTML = "";
     let score;
 
@@ -51,13 +55,15 @@
       answerField.innerHTML += "The answer is " + decodeHtml(correct);
       nextQuestion.innerHTML = "Next Question";
 
-      if (localStorage.getItem("score") == null){
+      if (localStorage.getItem("score") == null || localStorage.getItem("score") == NaN){
         localStorage.setItem("score", 0);
       } else {
         score = parseInt(localStorage.getItem("score"));
       }
-      score -= parseInt(difficulty);
+      if (score > 0) {
+      score -= 1;
       localStorage.setItem("score", score);
+      }
     }
   }
 
